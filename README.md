@@ -1,4 +1,5 @@
 # IONIC-APP-API-WOOCOMMERCE 
+****************************
 
 "An eCommerce Mobile App from start to end using Ionic Framework 3 and WooCommerce backend API.
 
