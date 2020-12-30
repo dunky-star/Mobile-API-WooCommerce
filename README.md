@@ -20,7 +20,7 @@ ionic serve --l
 ionic cordova platform add android
 ionic cordova run android
 
-# Run the app on your phone
+# Run the app on iOS phone
 
 ionic cordova platform add ios
 ionic cordova run ios
