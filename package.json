@@ -27,11 +27,13 @@
     "ionicons": "3.0.0",
     "rxjs": "5.5.11",
     "sw-toolbox": "3.6.0",
+    "woocommerce-api": "^1.5.0",
     "zone.js": "0.8.29"
   },
   "devDependencies": {
     "@ionic/app-scripts": "3.2.4",
     "@ionic/lab": "3.2.10",
+    "@types/node": "^14.14.16",
     "typescript": "2.6.2"
   },
   "description": "An Ionic project"
