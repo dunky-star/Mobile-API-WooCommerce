@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
-var WC = require('woocommerce-api');
+declare var require: any;
+
+var WC = require('woocommerce-api')
 
 @Component({
   selector: 'page-home',
@@ -10,22 +12,24 @@ var WC = require('woocommerce-api');
 export class HomePage {
 
 
-  WooCommerce: any;
+  wc: any;
+  products: any[];
 
   constructor(public navCtrl: NavController) {
 
-  var WooCommerce = new WC({
-  url: 'http://21shop-it.com',
-  consumerKey: 'ck_211c5b903b7f2e48f211caebd6ca1dc0d8ecb4ee',
-  consumerSecret: 'cs_eb10a011b2d8ea0c3408bb3137ee0ebf3fb5b378',
-  version: 'v3'
-});
+    this.wc = WC({
+      url: 'https://full-dress-objectiv.000webhostapp.com',
+      consumerKey: 'ck_209a15b6e5c396d21ee717cc460e604293836270',
+      consumerSecret: 'cs_2887b6d78228e67b1e1d2cca83c0f321d9076abc'
+    });
 
- this.WooCommerce.getAsync("products").then((data: { body: string; }) =>{
+    this.wc.getAsync("products").then( (data: any) =>{
       console.log(JSON.parse(data.body));
+      this.products = JSON.parse(data.body).products;
     }, (err: any) =>{
       console.log(err)
-    }
+    });
+
 
   }
 
