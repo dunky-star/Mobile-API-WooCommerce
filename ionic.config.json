@@ -1,0 +1,7 @@
+{
+  "name": "Mobile-API-WooCommerce",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
