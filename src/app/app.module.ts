@@ -14,7 +14,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 // import { Signup } from '../pages/signup/signup';
 // import { Login } from '../pages/login/login';
 // import { Checkout } from '../pages/checkout/checkout';
-import { HttpModule } from '@angular/http';
+//import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 import { PayPal } from '@ionic-native/paypal';
 // import { SearchPage } from '../pages/search/search';
 import { IonicStorageModule } from '@ionic/storage';
@@ -28,7 +29,8 @@ import { WoocommerceProvider } from '../providers/woocommerce/woocommerce';
   ],
   imports: [
     BrowserModule,
-    HttpModule,
+    //HttpModule,
+    HttpClientModule,
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot()
   ],

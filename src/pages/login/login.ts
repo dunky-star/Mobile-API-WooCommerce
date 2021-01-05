@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController, AlertController, Events } from 'ionic-angular';
-import { Http } from '@angular/http';
+import { HttpClient } from '@angular/common/http';;
 import { Storage } from '@ionic/storage';
 
 @IonicPage({})
@@ -13,7 +13,7 @@ export class Login {
   username: string;
   password: string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http, public toastCtrl: ToastController, public storage: Storage, public alertCtrl: AlertController, public events: Events) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient, public toastCtrl: ToastController, public storage: Storage, public alertCtrl: AlertController, public events: Events) {
 
     this.username = "";
     this.password = "";
@@ -22,8 +22,8 @@ export class Login {
 
   login(){
 
-    this.http.get("http://samarth.southeastasia.cloudapp.azure.com/api/auth/generate_auth_cookie/?insecure=cool&username=" + this.username + "&password=" + this.password)
-    .subscribe( (res) => {
+    this.http.get("https://full-dress-objectiv.000webhostapp.com/api/auth/generate_auth_cookie/?insecure=cool&username=" + this.username + "&password=" + this.password)
+    .subscribe( (res: { json: () => any; }) => {
       console.log(res.json());
 
       let response = res.json();
@@ -37,7 +37,7 @@ export class Login {
       }
 
 
-      this.storage.set("userLoginInfo", response).then( (data: any) =>{
+      this.storage.set("userLoginInfo", response).then( (data) =>{
 
         this.alertCtrl.create({
           title: "Login Successful",
