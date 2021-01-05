@@ -16,7 +16,7 @@ import { WoocommerceProvider } from '../../providers/woocommerce/woocommerce';
 })
 export class Menu {
 
-  homePage: Component;
+  homePage: any;
   WooCommerce: any;
   categories: any[];
   @ViewChild('content') childNavCtrl: NavController;
@@ -31,7 +31,7 @@ export class Menu {
     this.WooCommerce = WP.init();
 
 
-    this.WooCommerce.getAsync("products/categories").then((data) => {
+    this.WooCommerce.getAsync("products/categories").then((data: { body: string; }) => {
       console.log(JSON.parse(data.body).product_categories);
 
       let temp: any[] = JSON.parse(data.body).product_categories;
@@ -52,7 +52,7 @@ export class Menu {
           }
 
           this.categories.push(temp[i]);
-        } 
+        }
       }
 
       //Groups Subcategories
@@ -68,7 +68,7 @@ export class Menu {
 
 
 
-    }, (err) => {
+    }, (err: any) => {
       console.log(err)
     });
 
@@ -120,7 +120,7 @@ export class Menu {
 
   }
 
-  openCategoryPage(category) {
+  openCategoryPage(category: any) {
 
     this.childNavCtrl.setRoot('ProductsByCategory', { "category": category });
 

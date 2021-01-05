@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController, AlertController } from 'ionic-angular';
-//import * as WC from 'woocommerce-api';
+
 import { WoocommerceProvider } from '../../providers/woocommerce/woocommerce';
 
 @IonicPage({})
@@ -41,7 +41,7 @@ export class Signup {
     let reg = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
     if(reg.test(this.newUser.email)){
-      //email looks valid
+      //If email email is a valid format
 
       this.WooCommerce.getAsync('customers/email/' + this.newUser.email).then( (data: { body: string; }) => {
         let res = (JSON.parse(data.body));
@@ -50,7 +50,7 @@ export class Signup {
           validEmail = true;
 
           this.toastCtrl.create({
-            message: "Congratulations. Email is good to go.",
+            message: "Congratulations. please register.",
             duration: 3000
           }).present();
 
@@ -58,7 +58,7 @@ export class Signup {
           validEmail = false;
 
           this.toastCtrl.create({
-            message: "Email already registered. Please check.",
+            message: "Email already registered. Please use a different email or rset password",
             showCloseButton: true
           }).present();
         }
@@ -129,11 +129,11 @@ export class Signup {
         if(response.customer){
           this.alertCtrl.create({
             title: "Account Created",
-            message: "Your account has been created successfully! Please login to proceed.",
+            message: "Your account has been created successfully! Please proceed to our store.",
             buttons: [{
               text: "Login",
               handler: ()=> {
-                //TODO
+                // TODO at a later date
               }
             }]
           }).present();
