@@ -49,10 +49,10 @@ export class ProductDetails {
     //counting variation attributes options
     let count_ = 0;
     for (var index = 0; index < this.product.attributes.length; index++) {
-      
+
       if(this.product.attributes[index].variation)
         count_++;
-      
+
     }
 
     //checking if user selected all the variation options or not
@@ -64,7 +64,7 @@ export class ProductDetails {
         duration: 2000,
         showCloseButton: true
       }).present();
-      return; 
+      return;
     }
 
 
@@ -114,7 +114,7 @@ export class ProductDetails {
           } else {
             data[alreadyAddedIndex].qty = parseFloat(data[alreadyAddedIndex].qty) + 1;
             data[alreadyAddedIndex].amount = parseFloat(data[alreadyAddedIndex].amount) + parseFloat(data[alreadyAddedIndex].product.price);
-          } 
+          }
         } else {
           if(this.selectedVariation){
             data.push({
@@ -164,16 +164,16 @@ export class ProductDetails {
 
     //counting selected attribute options
     let count = 0;
-    for (let k in this.selectedOptions) 
-      if (this.selectedOptions.hasOwnProperty(k)) 
+    for (let k in this.selectedOptions)
+      if (this.selectedOptions.hasOwnProperty(k))
         count++;
 
     let count_ = 0;
     for (var index = 0; index < this.product.attributes.length; index++) {
-      
+
       if(this.product.attributes[index].variation)
         count_++;
-      
+
     }
 
     //checking if user selected all the variation options or not
