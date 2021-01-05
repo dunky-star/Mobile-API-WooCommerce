@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams, ModalController, Events } from 'io
 // import { HomePage } from '../home/home';
 // import { Signup } from '../signup/signup';
 // import { Login } from '../login/login';
-import * as WC from 'woocommerce-api';
+//import * as WC from 'woocommerce-api';
 // import { ProductsByCategory } from '../products-by-category/products-by-category'
 import { Storage } from '@ionic/storage';
 import { Cart } from '../cart/cart';

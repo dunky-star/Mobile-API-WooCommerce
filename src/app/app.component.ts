@@ -3,8 +3,8 @@ import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { Menu } from '../pages/menu/menu';
-import { Signup } from '../pages/signup/signup';
+//import { Menu } from '../pages/menu/menu';
+//import { Signup } from '../pages/signup/signup';
 import { OneSignal } from "@ionic-native/onesignal";
 
 @Component({

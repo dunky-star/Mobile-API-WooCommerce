@@ -37,7 +37,7 @@ export class Login {
       }
 
 
-      this.storage.set("userLoginInfo", response).then( (data) =>{
+      this.storage.set("userLoginInfo", response).then( (data: any) =>{
 
         this.alertCtrl.create({
           title: "Login Successful",
@@ -52,7 +52,7 @@ export class Login {
                 this.navCtrl.push(this.navParams.get("next"));
               } else {
                 this.navCtrl.pop();
-              }             
+              }
             }
           }]
         }).present();
