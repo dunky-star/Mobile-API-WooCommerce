@@ -29,18 +29,18 @@ export class ProductDetails {
 
     this.WooCommerce = WP.init(true);
 
-    this.WooCommerce.getAsync('products/' + this.product.id + '/reviews').then((data) => {
+    this.WooCommerce.getAsync('products/' + this.product.id + '/reviews').then((data: { body: string; }) => {
 
       this.reviews = JSON.parse(data.body);
       console.log(this.reviews);
 
-    }, (err) => {
+    }, (err: any) => {
       console.log(err);
     })
 
   }
 
-  addToCart(product) {
+  addToCart(product: { price: string; id: any; }) {
 
     //counting selected attribute options
     let count = 0;
@@ -156,7 +156,7 @@ export class ProductDetails {
 
   }
 
-  async check(justSelectedAttribute) {
+  async check(justSelectedAttribute: any) {
 
     let loading = this.loadingCtrl.create({
       content: "Getting Product Variations"

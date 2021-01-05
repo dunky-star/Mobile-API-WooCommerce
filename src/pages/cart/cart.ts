@@ -15,9 +15,9 @@ export class Cart {
   showEmptyCartMessage: boolean = false;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public storage: Storage, public viewCtrl: ViewController, public toastController: ToastController) {
-  
+
     this.total = 0.0;
-    
+
     this.storage.ready().then(()=>{
 
       this.storage.get("cart").then( (data)=>{
@@ -49,10 +49,10 @@ export class Cart {
 
   }
 
-  removeFromCart(item, i){
+  removeFromCart(item: { variation: { price: any; }; product: { price: any; }; qty: any; }, i: number){
 
-    let price;
-    
+    let price: number;
+
     if(item.variation){
       price = item.variation.price
     } else {
@@ -91,15 +91,15 @@ export class Cart {
 
   }
 
-  changeQty(item, i, change){
+  changeQty(item: { variation: { price: string; }; product: { price: any; }; qty: number; amount: number; }, i: string | number, change: number){
 
-    let price;
-    
+    let price: number;
+
     if(!item.variation)
       price = item.product.price;
     else
       price = parseFloat(item.variation.price);
-    
+
     let  qty = item.qty;
 
     if(change < 0 && item.qty == 1){
