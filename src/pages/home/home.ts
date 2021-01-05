@@ -1,68 +1,96 @@
 import { Component, ViewChild } from '@angular/core';
-import { NavController, Slides } from 'ionic-angular';
+import { IonicPage, NavController, Slides, ToastController } from 'ionic-angular';
+// import { ProductDetails } from '../product-details/product-details';
 
-declare var require: any;
+import * as WC from 'woocommerce-api';
+// import { SearchPage } from "../search/search";
+import { WoocommerceProvider } from '../../providers/woocommerce/woocommerce';
 
-var WC = require('woocommerce-api')
-
+@IonicPage({})
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
 
-  [x: string]: any;
   WooCommerce: any;
+  products: any[];
   moreProducts: any[];
   page: number;
   searchQuery: string = "";
-  wc: any;
-  products: any[];
-
-
 
   @ViewChild('productSlides') productSlides: Slides;
 
+  constructor(public navCtrl: NavController, public toastCtrl: ToastController, private WP: WoocommerceProvider) {
 
-  constructor(public navCtrl: NavController) {
+    this.page = 2;
 
-     this.page = 2;
+    this.WooCommerce = WP.init();
 
-    this.wc = WC({
-      url: 'https://full-dress-objectiv.000webhostapp.com',
-      consumerKey: 'ck_209a15b6e5c396d21ee717cc460e604293836270',
-      consumerSecret: 'cs_2887b6d78228e67b1e1d2cca83c0f321d9076abc'
-    });
+    this.loadMoreProducts(null);
 
-
-
-    this.wc.getAsync("products").then( (data: any) =>{
+    this.WooCommerce.getAsync("products").then( (data: { body: string; }) => {
       console.log(JSON.parse(data.body));
       this.products = JSON.parse(data.body).products;
-    }, (err: any) =>{
+    }, (err: any) => {
       console.log(err)
-    });
+    })
 
-    this.loadMoreProducts();
   }
 
-  ionViewDidLoad(){
-      setInterval(()=>{
-        if (this.productSlides.getActiveIndex() == this.productSlides.length() - 1)
-          this.productSlides.slideTo(0);
+  // ionViewDidLoad(){
+  //   setInterval(()=> {
 
-        this.productSlides.slideNext();
-      }, 3000);
-  };
+  //     if(this.productSlides.getActiveIndex() == this.productSlides.length() -1)
+  //       this.productSlides.slideTo(0);
 
-  loadMoreProducts(){
-     this.wc.getAsync("products?page=" + this.page).then( (data: any) =>{
+  //     this.productSlides.slideNext();
+  //   }, 3000)
+  // }
+
+  loadMoreProducts(event: { complete: () => void; enable: (arg0: boolean) => void; }){
+    console.log(event);
+    if(event == null)
+    {
+      this.page = 2;
+      this.moreProducts = [];
+    }
+    else
+      this.page++;
+
+    this.WooCommerce.getAsync("products?page=" + this.page).then( (data: { body: string; }) => {
       console.log(JSON.parse(data.body));
-      this.moreProducts = JSON.parse(data.body).products;
-    }, (err: any) =>{
-      console.log(err)
-    });
+      this.moreProducts = this.moreProducts.concat(JSON.parse(data.body).products);
 
+      if(event != null)
+      {
+        event.complete();
+      }
+
+      if(JSON.parse(data.body).products.length < 10){
+        event.enable(false);
+
+        this.toastCtrl.create({
+          message: "No more products!",
+          duration: 5000
+        }).present();
+
+      }
+
+
+    }, (err: any) => {
+      console.log(err)
+    })
+  }
+
+  openProductPage(product: any){
+    this.navCtrl.push('ProductDetails', {"product": product} );
+  }
+
+  onSearch(event: any){
+    if(this.searchQuery.length > 0){
+      this.navCtrl.push('SearchPage', {"searchQuery": this.searchQuery});
+    }
   }
 
 }
