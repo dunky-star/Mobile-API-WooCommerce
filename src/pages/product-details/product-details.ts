@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController, ModalController, LoadingController } from 'ionic-angular';
-import * as WC from 'woocommerce-api';
+//import * as WC from 'woocommerce-api';
 import { Cart } from '../cart/cart';
 
 import { Storage } from '@ionic/storage';

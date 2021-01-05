@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController, AlertController } from 'ionic-angular';
-import * as WC from 'woocommerce-api';
+//import * as WC from 'woocommerce-api';
 import { WoocommerceProvider } from '../../providers/woocommerce/woocommerce';
 
 @IonicPage({})
@@ -19,7 +19,7 @@ export class Signup {
 
     this.newUser.billing_address = {};
     this.newUser.shipping_address = {};
-    this.billing_shipping_same = false; 
+    this.billing_shipping_same = false;
 
     //this.newUser.billing_address.country = "India"
 
@@ -43,7 +43,7 @@ export class Signup {
     if(reg.test(this.newUser.email)){
       //email looks valid
 
-      this.WooCommerce.getAsync('customers/email/' + this.newUser.email).then( (data) => {
+      this.WooCommerce.getAsync('customers/email/' + this.newUser.email).then( (data: { body: string; }) => {
         let res = (JSON.parse(data.body));
 
         if(res.errors){
@@ -122,7 +122,7 @@ export class Signup {
         this.newUser.shipping_address = this.newUser.shipping_address;
       }
 
-      this.WooCommerce.postAsync('customers', customerData).then( (data) => {
+      this.WooCommerce.postAsync('customers', customerData).then( (data: { body: string; }) => {
 
         let response = (JSON.parse(data.body));
 

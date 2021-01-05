@@ -2,7 +2,7 @@
 
   <ion-navbar>
     <ion-title>Your Cart</ion-title>
-  </ion-navbar>
+</ion-navbar>
 
 </ion-header>
 
@@ -31,7 +31,7 @@
 
       <p *ngIf="item.variation"><span *ngFor="let att of item.variation.attributes">{{ att.option | titlecase }} &nbsp;</span></p>
 
-      <p>{{ item.qty }} • 
+      <p>{{ item.qty }} •
         <span *ngIf="!item.variation">{{ item.product.price }}</span>
         <span *ngIf="item.variation">{{ item.variation.price }}</span></p>
       <!-- <button ion-button clear item-right color="danger" (click)="removeFromCart(item, i)">
@@ -73,7 +73,7 @@
 
           </ion-col>
           <ion-col col-3 style="text-align: right">
-            <b> {{ total }} </b>
+            UGX<b> {{ total }} </b>
           </ion-col>
 
 
