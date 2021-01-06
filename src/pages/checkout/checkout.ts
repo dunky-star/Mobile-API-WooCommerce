@@ -68,7 +68,7 @@ export class Checkout {
 
     let paymentData: any = {};
 
-    this.paymentMethods.forEach((element, index) => {
+    this.paymentMethods.forEach((element, _index) => {
       if (element.method_id == this.paymentMethod) {
         paymentData = element;
       }
@@ -93,7 +93,7 @@ export class Checkout {
 
       this.payPal.init({
         PayPalEnvironmentProduction: "YOUR_PRODUCTION_CLIENT_ID",
-        PayPalEnvironmentSandbox: "AYkkS2ObeSpaObaCqA3bybQjRNRMKOw_2vNSha7gmxESpG4l4AhEyMfYwuzrUFKSbWGhCsN-Vhtl5FOG"
+        PayPalEnvironmentSandbox: "AYTrIqnKPUUVoi-r9orbyv0XbvIoEISHpbbxSPUkd_1exGIQXT80BthAz7_bR9cU9272BsDJ8e_qWhjg"
       }).then(() => {
         // Environments: PayPalEnvironmentNoNetwork, PayPalEnvironmentSandbox, PayPalEnvironmentProduction
         this.payPal.prepareToRender('PayPalEnvironmentSandbox', new PayPalConfiguration({
@@ -104,7 +104,7 @@ export class Checkout {
           this.storage.get("cart").then((cart) => {
 
             let total = 0.00;
-            cart.forEach((element: { variation: { id: any; price: number; }; product: { id: any; price: number; }; qty: number; }, index: any) => {
+            cart.forEach((element: { variation: { id: any; price: number; }; product: { id: any; price: number; }; qty: number; }, _index: any) => {
 
               if(element.variation){
                 orderItems.push({ product_id: element.product.id, variation_id: element.variation.id, quantity: element.qty });
@@ -159,13 +159,11 @@ export class Checkout {
 
 
 
-
-
     } else {
 
       this.storage.get("cart").then((cart) => {
 
-        cart.forEach((element: { variation: { id: any; }; product: { id: any; }; qty: any; }, index: any) => {
+        cart.forEach((element: { variation: { id: any; }; product: { id: any; }; qty: any; }, _index: any) => {
           if(element.variation){
             orderItems.push({ product_id: element.product.id, variation_id: element.variation.id, quantity: element.qty });
             ///total = total + (element.variation.price * element.qty);

@@ -5,7 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 //import { Menu } from '../pages/menu/menu';
 //import { Signup } from '../pages/signup/signup';
-import { OneSignal } from "@ionic-native/onesignal";
+import { OneSignal } from "@ionic-native/onesignal/ngx";
 
 @Component({
   templateUrl: 'app.html'

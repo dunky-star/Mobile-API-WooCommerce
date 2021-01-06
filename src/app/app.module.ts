@@ -19,7 +19,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { PayPal } from '@ionic-native/paypal/ngx';
 // import { SearchPage } from '../pages/search/search';
 import { IonicStorageModule } from '@ionic/storage';
-import { OneSignal } from "@ionic-native/onesignal";
+import { OneSignal } from '@ionic-native/onesignal/ngx';
 import { WoocommerceProvider } from '../providers/woocommerce/woocommerce';
 
 @NgModule({
@@ -29,7 +29,6 @@ import { WoocommerceProvider } from '../providers/woocommerce/woocommerce';
   ],
   imports: [
     BrowserModule,
-    //HttpModule,
     HttpClientModule,
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot()
