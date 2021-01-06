@@ -16,7 +16,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 // import { Checkout } from '../pages/checkout/checkout';
 //import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
-import { PayPal } from '@ionic-native/paypal';
+import { PayPal } from '@ionic-native/paypal/ngx';
 // import { SearchPage } from '../pages/search/search';
 import { IonicStorageModule } from '@ionic/storage';
 import { OneSignal } from "@ionic-native/onesignal";

@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
-import * as WC from 'woocommerce-api';
 // import { HomePage } from '../home/home';
 // import { Menu } from '../menu/menu';
-import { PayPal, PayPalPayment, PayPalConfiguration } from '@ionic-native/paypal';
+
+import { PayPal, PayPalPayment, PayPalConfiguration } from '@ionic-native/paypal/ngx';
 import { WoocommerceProvider } from '../../providers/woocommerce/woocommerce';
 
 @IonicPage({})
@@ -42,7 +42,7 @@ export class Checkout {
       let email = userLoginInfo.user.email;
       let id = userLoginInfo.user.id;
 
-      this.WooCommerce.getAsync("customers/"+id).then((data) => {
+      this.WooCommerce.getAsync("customers/"+id).then((data: { body: string; }) => {
 
         this.newOrder = JSON.parse(data.body);
 
@@ -104,7 +104,7 @@ export class Checkout {
           this.storage.get("cart").then((cart) => {
 
             let total = 0.00;
-            cart.forEach((element, index) => {
+            cart.forEach((element: { variation: { id: any; price: number; }; product: { id: any; price: number; }; qty: number; }, index: any) => {
 
               if(element.variation){
                 orderItems.push({ product_id: element.product.id, variation_id: element.variation.id, quantity: element.qty });
@@ -116,7 +116,7 @@ export class Checkout {
             });
 
             let payment = new PayPalPayment(total.toString(), 'USD', 'Description', 'sale');
-            this.payPal.renderSinglePaymentUI(payment).then((response) => {
+            this.payPal.renderSinglePaymentUI(payment).then((response: any) => {
               // Successfully paid
 
               alert(JSON.stringify(response));
@@ -128,7 +128,7 @@ export class Checkout {
 
               orderData.order = data;
 
-              this.WooCommerce.postAsync('orders', orderData.order).then((data) => {
+              this.WooCommerce.postAsync('orders', orderData.order).then((data: { body: string; }) => {
                 alert("Order placed successfully!");
 
                 let response = (JSON.parse(data.body));
@@ -165,7 +165,7 @@ export class Checkout {
 
       this.storage.get("cart").then((cart) => {
 
-        cart.forEach((element, index) => {
+        cart.forEach((element: { variation: { id: any; }; product: { id: any; }; qty: any; }, index: any) => {
           if(element.variation){
             orderItems.push({ product_id: element.product.id, variation_id: element.variation.id, quantity: element.qty });
             ///total = total + (element.variation.price * element.qty);
@@ -181,7 +181,7 @@ export class Checkout {
 
         orderData.order = data;
 
-        this.WooCommerce.postAsync("orders", orderData.order).then((data) => {
+        this.WooCommerce.postAsync("orders", orderData.order).then((data: { body: string; }) => {
 
           let response = (JSON.parse(data.body));
 

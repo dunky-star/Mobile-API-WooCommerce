@@ -45,34 +45,39 @@
       <ion-item>
         <ion-label>Country</ion-label>
         <ion-select [(ngModel)]="newOrder.billing.country">
-          <ion-option value="India" selected="true">India</ion-option>
+          <ion-option value="Uganda" selected="true">Uganda</ion-option>
         </ion-select>
       </ion-item>
 
       <ion-item>
         <ion-label>State</ion-label>
         <ion-select [(ngModel)]="newOrder.billing.state">
-          <ion-option value="New Delhi">New Delhi</ion-option>
-          <ion-option value="Uttar Pradesh">Uttar Pradesh</ion-option>
-          <ion-option value="Maharashtra">Maharashtra</ion-option>
-          <ion-option value="Tamil Nadu">Tamil Nadu</ion-option>
-          <ion-option value="Madhya Pradesh">Madhya Pradesh</ion-option>
+        <ion-option value="Kenya" selected="true">Kenya</ion-option>
+        <ion-option value="Tanzania">Tanzania</ion-option>
+        <ion-option value="Rwanda">Rwanda</ion-option>
+        <ion-option value="Burundi">Burundi</ion-option>
+        <ion-option value="South Sudan">South Sudan</ion-option>
+        <ion-option value="Nigeria">Nigeria</ion-option>
+        <ion-option value="South Africa">South Africa</ion-option>
+        <ion-option value="DRC">DRC</ion-option>
+        <ion-option value="UK">UK</ion-option>
+        <ion-option value="USA">USA</ion-option>
         </ion-select>
       </ion-item>
 
       <ion-item>
         <ion-label>City</ion-label>
-        <ion-input type="text" [(ngModel)]="newOrder.billing.city"></ion-input>        
+        <ion-input type="text" [(ngModel)]="newOrder.billing.city"></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label>Postal Code</ion-label>
-        <ion-input type="number" clearInput [(ngModel)]="newOrder.billing.postcode"></ion-input>        
+        <ion-input type="number" clearInput [(ngModel)]="newOrder.billing.postcode"></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label>Phone</ion-label>
-        <ion-input type="tel" clearInput [(ngModel)]="newOrder.billing.phone"></ion-input>        
+        <ion-input type="tel" clearInput [(ngModel)]="newOrder.billing.phone"></ion-input>
       </ion-item>
 
       <ion-item>
@@ -81,7 +86,7 @@
       </ion-item>
 
       <ion-item-divider color="danger" *ngIf="!billing_shipping_same">Shipping Details</ion-item-divider>
-      
+
       <ion-item *ngIf="!billing_shipping_same">
         <ion-label>First Name</ion-label>
         <ion-input type="text" [(ngModel)]="newOrder.shipping.first_name"></ion-input>
@@ -91,7 +96,7 @@
         <ion-label>Last Name</ion-label>
         <ion-input type="text" [(ngModel)]="newOrder.shipping.last_name"></ion-input>
       </ion-item>
-      
+
       <ion-item *ngIf="!billing_shipping_same">
         <ion-label>Address Line 1</ion-label>
         <ion-textarea type="text" maxlength="80" [(ngModel)]="newOrder.shipping.address_1"></ion-textarea>
@@ -105,34 +110,39 @@
       <ion-item *ngIf="!billing_shipping_same">
         <ion-label>Country</ion-label>
         <ion-select [(ngModel)]="newOrder.shipping.country">
-          <ion-option value="India" selected="true">India</ion-option>
+          <ion-option value="Uganda" selected="true">Uganda</ion-option>
         </ion-select>
       </ion-item>
 
       <ion-item *ngIf="!billing_shipping_same">
         <ion-label>State</ion-label>
         <ion-select [(ngModel)]="newOrder.shipping.state">
-          <ion-option value="New Delhi">New Delhi</ion-option>
-          <ion-option value="Uttar Pradesh">Uttar Pradesh</ion-option>
-          <ion-option value="Maharashtra">Maharashtra</ion-option>
-          <ion-option value="Tamil Nadu">Tamil Nadu</ion-option>
-          <ion-option value="Madhya Pradesh">Madhya Pradesh</ion-option>
+          <ion-option value="Kenya" selected="true">Kenya</ion-option>
+          <ion-option value="Tanzania">Tanzania</ion-option>
+          <ion-option value="Rwanda">Rwanda</ion-option>
+          <ion-option value="Burundi">Burundi</ion-option>
+          <ion-option value="South Sudan">South Sudan</ion-option>
+          <ion-option value="Nigeria">Nigeria</ion-option>
+          <ion-option value="South Africa">South Africa</ion-option>
+          <ion-option value="DRC">DRC</ion-option>
+          <ion-option value="UK">UK</ion-option>
+          <ion-option value="USA">USA</ion-option>
         </ion-select>
       </ion-item>
 
       <ion-item *ngIf="!billing_shipping_same">
         <ion-label>City</ion-label>
-        <ion-input type="text" [(ngModel)]="newOrder.shipping.city"></ion-input>        
+        <ion-input type="text" [(ngModel)]="newOrder.shipping.city"></ion-input>
       </ion-item>
 
       <ion-item *ngIf="!billing_shipping_same">
         <ion-label>Postal Code</ion-label>
-        <ion-input type="number" clearInput [(ngModel)]="newOrder.shipping.postcode"></ion-input>        
+        <ion-input type="number" clearInput [(ngModel)]="newOrder.shipping.postcode"></ion-input>
       </ion-item>
 
       <ion-item *ngIf="!billing_shipping_same">
         <ion-label>Phone</ion-label>
-        <ion-input type="tel" clearInput [(ngModel)]="newOrder.shipping.phone"></ion-input>        
+        <ion-input type="tel" clearInput [(ngModel)]="newOrder.shipping.phone"></ion-input>
       </ion-item>
 
       <ion-item-divider color="danger">Payment Details</ion-item-divider>

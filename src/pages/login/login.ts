@@ -37,7 +37,7 @@ export class Login {
       }
 
 
-      this.storage.set("userLoginInfo", response).then( (data) =>{
+      this.storage.set("userLoginInfo", response).then( (_data) =>{
 
         this.alertCtrl.create({
           title: "Login Successful",
