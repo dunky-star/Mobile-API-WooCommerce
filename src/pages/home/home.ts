@@ -2,7 +2,6 @@ import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, Slides, ToastController } from 'ionic-angular';
 // import { ProductDetails } from '../product-details/product-details';
 
-import * as WC from 'woocommerce-api';
 // import { SearchPage } from "../search/search";
 import { WoocommerceProvider } from '../../providers/woocommerce/woocommerce';
 

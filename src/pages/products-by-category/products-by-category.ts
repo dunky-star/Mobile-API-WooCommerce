@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import * as WC from 'woocommerce-api';
+
 import { WoocommerceProvider } from '../../providers/woocommerce/woocommerce';
 // import { ProductDetails } from '../product-details/product-details';
 
@@ -23,10 +23,10 @@ export class ProductsByCategory {
 
     this.WooCommerce = WP.init();
 
-    this.WooCommerce.getAsync("products?filter[category]=" + this.category.slug).then((data) => {
+    this.WooCommerce.getAsync("products?filter[category]=" + this.category.slug).then((data: { body: string; }) => {
       console.log(JSON.parse(data.body));
       this.products = JSON.parse(data.body).products;
-    }, (err) => {
+    }, (err: any) => {
       console.log(err)
     })
 
@@ -36,10 +36,10 @@ export class ProductsByCategory {
     console.log('ionViewDidLoad ProductsByCategory');
   }
 
-  loadMoreProducts(event) {
+  loadMoreProducts(event: { complete: () => void; enable: (arg0: boolean) => void; }) {
     this.page++;
     console.log("Getting page " + this.page);
-    this.WooCommerce.getAsync("products?filter[category]=" + this.category.slug + "&page=" + this.page).then((data) => {
+    this.WooCommerce.getAsync("products?filter[category]=" + this.category.slug + "&page=" + this.page).then((data: { body: string; }) => {
       let temp = (JSON.parse(data.body).products);
 
       this.products = this.products.concat(JSON.parse(data.body).products)
@@ -51,7 +51,7 @@ export class ProductsByCategory {
     })
   }
 
-  openProductPage(product){
+  openProductPage(product: any){
     this.navCtrl.push('ProductDetails', {"product": product} );
   }
 
